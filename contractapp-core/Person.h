@@ -3,12 +3,13 @@
 
 #include "contractapp-core_global.h"
 
+#include <QMetaType>
 #include <QString>
 
 class CONTRACTAPPCORE_EXPORT Person
 {
 public:
-    explicit Person(const QString& firstName = "", const QString& lastName = "", const QString& email = "", const QString& city = "");
+    Person(const QString& firstName = "", const QString& lastName = "", const QString& email = "", const QString& city = "");
 
     int id() const;
     void setId(int id);
@@ -22,12 +23,14 @@ public:
     void setCity(const QString& city);
 
 private:
-    int mId;
+    int mId{};
     QString mFirstName;
     QString mLastName;
     QString mEmail;
     QString mCity;
 
 };
+
+Q_DECLARE_METATYPE(Person);
 
 #endif // PERSON_H

@@ -37,11 +37,11 @@ QVariant PersonModel::data(const QModelIndex &index, int role) const
         return {};
     }
 
-    const Person& person = *mPersons->at(index.row());
+    Person& person = *mPersons->at(index.row());
 
     switch (role) {
     case Roles::ID_ROLE:
-        return person.id();
+        return QVariant::fromValue(person);
     case Roles::FIRST_NAME_ROLE:
         return person.firstName();
     case Roles::LAST_NAME_ROLE:
@@ -67,13 +67,18 @@ QVariant PersonModel::data(const QModelIndex &index, int role) const
 
 bool PersonModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    if(!isIndexValid(index) || role != Roles::FIRST_NAME_ROLE)
+    if(!isIndexValid(index) || role != Roles::ID_ROLE)
     {
         return false;
     }
 
+    auto personTemp = qvariant_cast<Person>(value);
+
     Person& person = *mPersons->at(index.row());
-    person.setFirstName(value.toString());
+    person.setFirstName(personTemp.firstName());
+    person.setLastName(personTemp.lastName());
+    person.setCity(personTemp.city());
+    person.setEmail(personTemp.email());
     mDb.m_persondao.updatePerson(person);
     emit dataChanged(index, index);
     return true;

@@ -52,7 +52,7 @@ void PersonDao::updatePerson(const Person &person) const
 void PersonDao::removePerson(int id) const
 {
     QSqlQuery query(m_database);
-    query.prepare("DELETE FROM peron WHERE id = (:id)");
+    query.prepare("DELETE FROM person WHERE id = (:id)");
     query.bindValue(":id", id);
     query.exec();
     DatabaseManager::debugQuery(query);
