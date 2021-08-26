@@ -9,6 +9,7 @@ PersonDialog::PersonDialog(Person& person, QWidget *parent) :
     ui->setupUi(this);
 
     connect(ui->buttonBox, &QDialogButtonBox::accepted, this, &PersonDialog::accept);
+    connect(ui->buttonBox, &QDialogButtonBox::rejected, this, &PersonDialog::reject);
 
     ui->elFirstName->setText(mPerson.firstName());
     ui->elLastName->setText(mPerson.lastName());
@@ -31,4 +32,8 @@ void PersonDialog::accept() {
         mPerson.setPrincipal(true);
 
     QDialog::accept();
+}
+
+void PersonDialog::reject() {
+    QDialog::reject();
 }

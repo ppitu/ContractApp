@@ -19,6 +19,7 @@ public:
 
 private slots:
     void accept();
+    void reject();
 
 private:
     Ui::PersonDialog *ui;

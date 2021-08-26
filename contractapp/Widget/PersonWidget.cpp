@@ -36,11 +36,12 @@ void PersonWidget::createPerson()
 
     auto *dialog = new PersonDialog(person);
 
-    dialog->exec();
+    auto dialogCode = dialog->exec();
 
-
-    QModelIndex createdIndex = mPersonModel->addPerson(person);
-    ui->personTable->setCurrentIndex(createdIndex);
+    if(dialogCode == QDialog::Accepted) {
+        QModelIndex createdIndex = mPersonModel->addPerson(person);
+        ui->personTable->setCurrentIndex(createdIndex);
+    }
 
     delete dialog;
 }
@@ -50,6 +51,9 @@ void PersonWidget::setPersonSelectionModel(QItemSelectionModel *personSelectionM
 }
 
 void PersonWidget::removePerson() {
+    if(ui->personTable->selectionModel()->selectedIndexes().isEmpty())
+        return;
+
     int row = ui->personTable->selectionModel()->currentIndex().row();
     mPersonModel->removeRow(row);
 }
@@ -62,7 +66,6 @@ void PersonWidget::editPerson() {
     auto *dialog = new PersonDialog(person, this);
 
     dialog->exec();
-
     mPersonModel->setData(currentPersonIndex, QVariant::fromValue(person), PersonModel::Roles::ID_ROLE);
 
     delete dialog;

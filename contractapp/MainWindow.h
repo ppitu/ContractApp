@@ -9,6 +9,7 @@ namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class PersonWidget;
+class ContractWidget;
 
 class MainWindow : public QMainWindow
 {
@@ -21,6 +22,7 @@ public:
 private:
     Ui::MainWindow *ui;
     PersonWidget* mPersonWidget;
+    ContractWidget* mContractWidget;
     QTabWidget* mTabWidget;
 };
 #endif // MAINWINDOW_H
