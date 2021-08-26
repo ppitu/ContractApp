@@ -3,7 +3,7 @@
 
 #include <QDialog>
 
-#include "Person.h"
+#include "Class/Person.h"
 
 namespace Ui {
 class PersonDialog;

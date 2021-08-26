@@ -15,12 +15,12 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Sql REQUIRED)
 
 add_library(contractapp-core SHARED
   contractapp-core_global.h
-  Person.cpp
-  Person.h
-  PersonDao.cpp
-  PersonDao.h
-  PersonModel.cpp
-  PersonModel.h
+        Class/Person.cpp
+        Class/Person.h
+        DatabaseClass/PersonDao.cpp
+        DatabaseClass/PersonDao.h
+        Model/PersonModel.cpp
+        Model/PersonModel.h
   Database/DatabaseManager.cpp
   Database/DatabaseManager.h
 )

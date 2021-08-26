@@ -1,12 +1,13 @@
 #include "Person.h"
 
 
-Person::Person(const QString &firstName, const QString &lastName, const QString& email, const QString& city) :
+Person::Person(const QString &firstName, const QString &lastName, const QString& email, const QString& city, bool principal) :
     mId(-1),
     mFirstName(firstName),
     mLastName(lastName),
     mEmail(email),
-    mCity(city)
+    mCity(city),
+    mIsPrincipal(principal)
 {
 
 }
@@ -59,4 +60,12 @@ QString Person::city() const
 void Person::setCity(const QString &city)
 {
     mCity = city;
+}
+
+void Person::setPrincipal(bool principal) {
+    mIsPrincipal = principal;
+}
+
+bool Person::isPrincipal() const {
+    return mIsPrincipal;
 }

@@ -3,8 +3,8 @@
 
 #include <QInputDialog>
 
-#include "PersonModel.h"
-#include "PersonDialog.h"
+#include "Model/PersonModel.h"
+#include "Dialog/PersonDialog.h"
 
 PersonWidget::PersonWidget(QWidget *parent) :
     QWizardPage(parent),

@@ -16,15 +16,18 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="2">
+      <widget class="QLineEdit" name="elLastName"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLineEdit" name="elFirstName"/>
+     </item>
      <item row="2" column="0">
       <widget class="QLabel" name="lblEMail">
        <property name="text">
         <string>E-mail</string>
        </property>
       </widget>
-     </item>
-     <item row="3" column="2">
-      <widget class="QLineEdit" name="elCity"/>
      </item>
      <item row="0" column="0">
       <widget class="QLabel" name="lblFirstName">
@@ -33,24 +36,12 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QLineEdit" name="elEMail"/>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLineEdit" name="elFirstName"/>
-     </item>
-     <item row="4" column="0">
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
+     <item row="2" column="2">
+      <widget class="QLabel" name="lblCity">
+       <property name="text">
+        <string>Miasto</string>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
+      </widget>
      </item>
      <item row="1" column="1">
       <spacer name="horizontalSpacer">
@@ -72,13 +63,29 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="2">
-      <widget class="QLineEdit" name="elLastName"/>
+     <item row="3" column="2">
+      <widget class="QLineEdit" name="elCity"/>
      </item>
-     <item row="2" column="2">
-      <widget class="QLabel" name="lblCity">
+     <item row="5" column="0">
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLineEdit" name="elEMail"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QCheckBox" name="chkIsPrincipal">
        <property name="text">
-        <string>Miasto</string>
+        <string>Zleceniodawca</string>
        </property>
       </widget>
      </item>

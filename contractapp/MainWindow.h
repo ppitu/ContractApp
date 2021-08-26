@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTabWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,5 +21,6 @@ public:
 private:
     Ui::MainWindow *ui;
     PersonWidget* mPersonWidget;
+    QTabWidget* mTabWidget;
 };
 #endif // MAINWINDOW_H

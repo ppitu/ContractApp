@@ -9,7 +9,7 @@
 class CONTRACTAPPCORE_EXPORT Person
 {
 public:
-    Person(const QString& firstName = "", const QString& lastName = "", const QString& email = "", const QString& city = "");
+    Person(const QString& firstName = "", const QString& lastName = "", const QString& email = "", const QString& city = "", bool Principal = false);
 
     int id() const;
     void setId(int id);
@@ -21,6 +21,8 @@ public:
     void setEmail(const QString& mail);
     QString city() const;
     void setCity(const QString& city);
+    void setPrincipal(bool principal);
+    bool isPrincipal() const;
 
 private:
     int mId{};
@@ -28,6 +30,7 @@ private:
     QString mLastName;
     QString mEmail;
     QString mCity;
+    bool mIsPrincipal;
 
 };
 

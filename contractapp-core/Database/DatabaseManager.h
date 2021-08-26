@@ -5,7 +5,7 @@
 
 #include <QString>
 
-#include "PersonDao.h"
+#include "DatabaseClass/PersonDao.h"
 
 class QSqlDatabase;
 class QSqlQuery;

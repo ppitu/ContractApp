@@ -29,10 +29,10 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
-        PersonWidget.cpp
-        PersonWidget.h
-        PersonWidget.ui
-        PersonDialog.h PersonDialog.cpp PersonDialog.ui
+        Widget/PersonWidget.cpp
+        Widget/PersonWidget.h
+        Widget/PersonWidget.ui
+        Dialog/PersonDialog.h Dialog/PersonDialog.cpp Dialog/PersonDialog.ui
         MainWindow.cpp
         MainWindow.h
         MainWindow.ui

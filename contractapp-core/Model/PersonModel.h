@@ -6,7 +6,7 @@
 #include <vector>
 #include <memory>
 
-#include "Person.h"
+#include "Class/Person.h"
 #include "Database/DatabaseManager.h"
 
 class PersonModel : public QAbstractTableModel
