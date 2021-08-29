@@ -26,6 +26,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+find_package(Qt6PrintSupport REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -59,6 +60,7 @@ include_directories("../contractapp-core")
 
 target_link_libraries(contractapp PRIVATE contractapp-core)
 target_link_libraries(contractapp PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(contractapp PRIVATE Qt6::PrintSupport)
 
 
 set_target_properties(contractapp PROPERTIES

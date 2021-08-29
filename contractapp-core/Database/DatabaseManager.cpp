@@ -23,17 +23,19 @@ DatabaseManager &DatabaseManager::instance()
 
 DatabaseManager::~DatabaseManager()
 {
-    m_database->close();
+    mDatabase->close();
 }
 
 DatabaseManager::DatabaseManager(const QString &path) :
-    m_database(new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"))),
-    m_persondao(*m_database)
+        mDatabase(new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"))),
+        mPersonDao(*mDatabase),
+        mPatternDao(*mDatabase)
 {
-    m_database->setDatabaseName(path);
-    bool openStatus = m_database->open();
+    mDatabase->setDatabaseName(path);
+    bool openStatus = mDatabase->open();
 
     qDebug() << "Database connection: " << (openStatus ? "OK" : "Error");
 
-    m_persondao.init();
+    mPersonDao.init();
+    mPatternDao.init();
 }

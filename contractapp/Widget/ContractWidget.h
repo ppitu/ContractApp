@@ -22,6 +22,8 @@ public:
 
     ~ContractWidget() override;
 
+private slots:
+    void preview();
 
 private:
     Ui::ContractWidget *ui;

@@ -20,8 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
     mPersonDatabaseWidget = new PersonDatabaseWidget(principalModel, contractorModel, this);
     mContractWidget = new ContractWidget(principalModel, contractorModel, this);
 
-    mTabWidget->addTab(mPersonDatabaseWidget, "Baza Osob");
     mTabWidget->addTab(mContractWidget, "Umowy");
+    mTabWidget->addTab(mPersonDatabaseWidget, "Baza Osob");
 
     setCentralWidget(mTabWidget);
 

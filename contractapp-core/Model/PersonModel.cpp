@@ -3,7 +3,7 @@
 PersonModel::PersonModel(const QString& view, QObject *parent) :
     QAbstractTableModel(parent),
     mDb(DatabaseManager::instance()),
-    mPersons(mDb.m_persondao.persons(view))
+    mPersons(mDb.mPersonDao.persons(view))
 {
 
 }
@@ -13,7 +13,7 @@ QModelIndex PersonModel::addPerson(const Person &peron)
     int rowIndex = rowCount();
     beginInsertRows(QModelIndex(), rowIndex, rowIndex);
     std::unique_ptr<Person> newPeron(new Person(peron));
-    mDb.m_persondao.addPerson(*newPeron);
+    mDb.mPersonDao.addPerson(*newPeron);
     mPersons->push_back(std::move(newPeron));
     endInsertRows();
     return index(rowIndex, 0);
@@ -79,7 +79,7 @@ bool PersonModel::setData(const QModelIndex &index, const QVariant &value, int r
     person.setLastName(personTemp.lastName());
     person.setCity(personTemp.city());
     person.setEmail(personTemp.email());
-    mDb.m_persondao.updatePerson(person);
+    mDb.mPersonDao.updatePerson(person);
     emit dataChanged(index, index);
     return true;
 }
@@ -97,7 +97,7 @@ bool PersonModel::removeRows(int row, int count, const QModelIndex &parent)
     while(countLeft--)
     {
         const Person& person = *mPersons->at(row + countLeft);
-        mDb.m_persondao.removePerson(person.id());
+        mDb.mPersonDao.removePerson(person.id());
     }
     endRemoveRows();
     return true;

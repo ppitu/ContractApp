@@ -6,6 +6,7 @@
 #include <QString>
 
 #include "DatabaseClass/PersonDao.h"
+#include "DatabaseClass/PatternDao.h"
 
 class QSqlDatabase;
 class QSqlQuery;
@@ -22,13 +23,13 @@ public:
 
 protected:
     DatabaseManager(const QString& path = DATABASE_FILENAME);
-    DatabaseManager& operator=(const DatabaseManager& rhs);
 
 private:
-    std::unique_ptr<QSqlDatabase> m_database;
+    std::unique_ptr<QSqlDatabase> mDatabase;
 
 public:
-    const PersonDao m_persondao;
+    const PersonDao mPersonDao;
+    const PatternDao mPatternDao;
 };
 
 #endif // DATABASEMANAGER_H

@@ -23,7 +23,7 @@ add_library(contractapp-core SHARED
         Model/PersonModel.h
   Database/DatabaseManager.cpp
   Database/DatabaseManager.h
-        )
+        Class/Pattern.cpp Class/Pattern.h DatabaseClass/PatternDao.cpp DatabaseClass/PatternDao.h)
 
 target_link_libraries(contractapp-core PRIVATE Qt${QT_VERSION_MAJOR}::Core)
 target_link_libraries(contractapp-core PRIVATE Qt${QT_VERSION_MAJOR}::Sql)

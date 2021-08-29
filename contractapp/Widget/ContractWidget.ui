@@ -52,9 +52,9 @@
     </layout>
    </item>
    <item>
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+    <widget class="QPushButton" name="btnPreview">
+     <property name="text">
+      <string>PushButton</string>
      </property>
     </widget>
    </item>
