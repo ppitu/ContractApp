@@ -36,7 +36,7 @@ set(PROJECT_SOURCES
         MainWindow.cpp
         MainWindow.h
         MainWindow.ui
-        Widget/ContractWidget.cpp Widget/ContractWidget.h Widget/ContractWidget.ui)
+        Widget/ContractWidget.cpp Widget/ContractWidget.h Widget/ContractWidget.ui Widget/PersonDatabaseWidget.cpp Widget/PersonDatabaseWidget.h Widget/PersonDatabaseWidget.ui)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(contractapp

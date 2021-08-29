@@ -1,9 +1,9 @@
 #include "PersonModel.h"
 
-PersonModel::PersonModel(QObject *parent) :
+PersonModel::PersonModel(const QString& view, QObject *parent) :
     QAbstractTableModel(parent),
     mDb(DatabaseManager::instance()),
-    mPersons(mDb.m_persondao.persons())
+    mPersons(mDb.m_persondao.persons(view))
 {
 
 }

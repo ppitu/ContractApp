@@ -21,8 +21,8 @@ public:
     void setEmail(const QString& mail);
     QString city() const;
     void setCity(const QString& city);
-    void setPrincipal(bool principal);
-    bool isPrincipal() const;
+    void setPrincipal(int principal);
+    int isPrincipal() const;
 
 private:
     int mId{};
@@ -30,7 +30,7 @@ private:
     QString mLastName;
     QString mEmail;
     QString mCity;
-    bool mIsPrincipal;
+    int mIsPrincipal;
 
 };
 

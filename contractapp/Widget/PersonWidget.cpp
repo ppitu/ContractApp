@@ -6,9 +6,10 @@
 #include "Model/PersonModel.h"
 #include "Dialog/PersonDialog.h"
 
-PersonWidget::PersonWidget(QWidget *parent) :
+PersonWidget::PersonWidget(int principal, QWidget *parent) :
     QWizardPage(parent),
     ui(new Ui::PersonWidget),
+    isPrincipal(principal),
     mPersonSelectionModel(nullptr),
     mPersonModel(nullptr)
 {
@@ -39,6 +40,7 @@ void PersonWidget::createPerson()
     auto dialogCode = dialog->exec();
 
     if(dialogCode == QDialog::Accepted) {
+        person.setPrincipal(isPrincipal);
         QModelIndex createdIndex = mPersonModel->addPerson(person);
         ui->personTable->setCurrentIndex(createdIndex);
     }
@@ -69,4 +71,8 @@ void PersonWidget::editPerson() {
     mPersonModel->setData(currentPersonIndex, QVariant::fromValue(person), PersonModel::Roles::ID_ROLE);
 
     delete dialog;
+}
+
+int PersonWidget::getPrincipal() const {
+    return isPrincipal;
 }

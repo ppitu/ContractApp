@@ -1,23 +1,26 @@
 #include "MainWindow.h"
 #include "./ui_MainWindow.h"
 
-#include "Model/PersonModel.h"
-#include "Widget/PersonWidget.h"
+#include "Widget/PersonDatabaseWidget.h"
 #include "Widget/ContractWidget.h"
+#include "Model/PersonModel.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , mPersonWidget(new PersonWidget(this))
-    , mContractWidget(new ContractWidget(this))
+    , mPersonDatabaseWidget(nullptr)
+    , mContractWidget(nullptr)
     , mTabWidget(new QTabWidget(this))
 {
     ui->setupUi(this);
 
-    auto* personModel = new PersonModel(this);
-    mPersonWidget->setModel(personModel);
+    auto* principalModel = new PersonModel("v_principal", this);
+    auto* contractorModel = new PersonModel("v_contractor", this);
 
-    mTabWidget->addTab(mPersonWidget, "Baza osób");
+    mPersonDatabaseWidget = new PersonDatabaseWidget(principalModel, contractorModel, this);
+    mContractWidget = new ContractWidget(principalModel, contractorModel, this);
+
+    mTabWidget->addTab(mPersonDatabaseWidget, "Baza Osob");
     mTabWidget->addTab(mContractWidget, "Umowy");
 
     setCentralWidget(mTabWidget);

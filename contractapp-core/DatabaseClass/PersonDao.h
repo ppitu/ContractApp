@@ -11,15 +11,15 @@ class Person;
 class PersonDao
 {
 public:
-    PersonDao(QSqlDatabase &database);
+    explicit PersonDao(QSqlDatabase &database);
     void init() const;
     void addPerson(Person& person) const;
     void updatePerson(const Person& person) const;
     void removePerson(int id) const;
-    std::unique_ptr<std::vector<std::unique_ptr<Person>>> persons() const;
-
+    [[nodiscard]] virtual std::unique_ptr<std::vector<std::unique_ptr<Person>>> persons(const QString& view) const;
+    virtual ~PersonDao();
 private:
-    QSqlDatabase& m_database;
+    QSqlDatabase& mDatabase;
 };
 
 #endif // PERSONDAO_H

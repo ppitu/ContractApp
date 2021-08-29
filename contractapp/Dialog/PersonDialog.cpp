@@ -15,7 +15,6 @@ PersonDialog::PersonDialog(Person& person, QWidget *parent) :
     ui->elLastName->setText(mPerson.lastName());
     ui->elCity->setText(mPerson.city());
     ui->elEMail->setText(mPerson.email());
-    ui->chkIsPrincipal->setChecked(mPerson.isPrincipal());
 }
 
 PersonDialog::~PersonDialog()
@@ -28,8 +27,6 @@ void PersonDialog::accept() {
     mPerson.setLastName(ui->elLastName->text());
     mPerson.setEmail(ui->elEMail->text());
     mPerson.setCity(ui->elCity->text());
-    if(ui->chkIsPrincipal->isChecked())
-        mPerson.setPrincipal(true);
 
     QDialog::accept();
 }

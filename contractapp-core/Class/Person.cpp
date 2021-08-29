@@ -62,10 +62,10 @@ void Person::setCity(const QString &city)
     mCity = city;
 }
 
-void Person::setPrincipal(bool principal) {
+void Person::setPrincipal(int principal) {
     mIsPrincipal = principal;
 }
 
-bool Person::isPrincipal() const {
+int Person::isPrincipal() const {
     return mIsPrincipal;
 }

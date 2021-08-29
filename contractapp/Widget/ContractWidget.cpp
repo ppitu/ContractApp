@@ -7,13 +7,23 @@
 #include "ContractWidget.h"
 #include "ui_ContractWidget.h"
 
+#include "Model/PersonModel.h"
 
-ContractWidget::ContractWidget(QWidget *parent) :
-        QWidget(parent), ui(new Ui::ContractWidget) {
+ContractWidget::ContractWidget(PersonModel* principalModel, PersonModel* contractorModel, QWidget *parent) :
+        QWidget(parent),
+        ui(new Ui::ContractWidget),
+        mPrincipalModel(principalModel),
+        mContractorModel(contractorModel)
+{
     ui->setupUi(this);
+    ui->cbPrincipal->setModel(mPrincipalModel);
+    ui->cbPrincipal->setModelColumn(1);
+    ui->cbContractor->setModel(mContractorModel);
+    ui->cbContractor->setModelColumn(1);
 }
 
 ContractWidget::~ContractWidget() {
     delete ui;
 }
+
 

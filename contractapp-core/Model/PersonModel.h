@@ -30,7 +30,7 @@ public:
         CITY
     };
 
-    PersonModel(QObject* parent = 0);
+    PersonModel(const QString& view, QObject* parent = 0);
 
     QModelIndex addPerson(const Person& peron);
 

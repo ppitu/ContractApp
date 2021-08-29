@@ -16,11 +16,12 @@ class PersonWidget : public QWizardPage
     Q_OBJECT
 
 public:
-    explicit PersonWidget(QWidget *parent = nullptr);
+    explicit PersonWidget(int principal, QWidget *parent = nullptr);
     ~PersonWidget();
 
     void setModel(PersonModel *model);
     void setPersonSelectionModel(QItemSelectionModel* personSelectionModel);
+    int getPrincipal() const;
 
 private slots:
     void createPerson();
@@ -30,6 +31,7 @@ private slots:
 private:
     Ui::PersonWidget *ui;
     PersonModel* mPersonModel;
+    int isPrincipal;
 
     QItemSelectionModel* mPersonSelectionModel;
 };
