@@ -73,3 +73,34 @@ std::unique_ptr<std::vector<std::unique_ptr<Pattern>>> PatternDao::patterns() co
 
     return list;
 }
+
+void PatternDao::updatePattern(const Pattern &pattern) const {
+    QSqlQuery query(mDatabase);
+    query.prepare("UPDATE pattern SET name = (:name), T1 = (:t1), T2 = (:t2), T3 = (:t3), T4 = (:t4), T5 = (:t5),"\
+    "T6 = (:t6), T7 = (:t7), T8 = (:t8), T9 = (:t9), T10 = (:t10), T11 = (:t11), T12 = (:t12), P1 = (:p1),  P2 = (:p12),"\
+    " P3 = (:p3), P4 = (:p4), P5 = (:p5), P6 = (:p6), P7 = (:p7), P8 = (:p8), P9 = (:p9), P10 = (:p10), P11 = (:p11), P12 = (:p12)");
+    query.bindValue(":name", pattern.getName());
+    for(int i = 0; i < 12; ++i)
+    {
+        if(i >= pattern.mTitles.size())
+        {
+            query.bindValue(":t" + QString::number(i), "");
+            query.bindValue(":p" + QString::number(i), "");
+        } else
+        {
+            query.bindValue(":t" + QString::number(i), pattern.mTitles[i]);
+            query.bindValue(":p" + QString::number(i), pattern.mParagraphs[i]);
+        }
+    }
+
+    query.exec();
+    DatabaseManager::debugQuery(query);
+}
+
+void PatternDao::removePattern(int id) const {
+    QSqlQuery query(mDatabase);
+    query.prepare("DELETE FROM pattern WHERE id = (:id)");
+    query.bindValue(":id", id);
+    query.exec();
+    DatabaseManager::debugQuery(query);
+}

@@ -7,6 +7,7 @@
 
 #include <QString>
 #include <QVector>
+#include <QMetaType>
 
 class Pattern {
 public:
@@ -24,5 +25,6 @@ private:
     QString mName;
 };
 
+Q_DECLARE_METATYPE(Pattern)
 
 #endif //CONTRACTAPP_PATTERN_H
