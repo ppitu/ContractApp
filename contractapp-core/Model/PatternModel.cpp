@@ -18,7 +18,7 @@ int PatternModel::rowCount(const QModelIndex &parent) const {
 }
 
 int PatternModel::columnCount(const QModelIndex &parent) const {
-    return 5;
+    return 2;
 }
 
 QVariant PatternModel::data(const QModelIndex &index, int role) const {

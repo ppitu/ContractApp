@@ -20,4 +20,6 @@ int Pattern::getId() const {
     return mId;
 }
 
-Pattern::Pattern() = default;
+Pattern::Pattern(int vector_size) : mParagraphs(vector_size), mTitles(vector_size)
+{
+}

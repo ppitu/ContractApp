@@ -39,12 +39,12 @@ void PatternDao::addPattern(Pattern &pattern) const {
         /* ToDo make mTitles and mParagraphs private */
         if(i >= pattern.mTitles.size())
         {
-            query.bindValue(":t" + QString::number(i), "");
-            query.bindValue(":p" + QString::number(i), "");
+            query.bindValue(":t" + QString::number(i + 1), "");
+            query.bindValue(":p" + QString::number(i + 1), "");
         } else
         {
-            query.bindValue(":t" + QString::number(i), pattern.mTitles[i]);
-            query.bindValue(":p" + QString::number(i), pattern.mParagraphs[i]);
+            query.bindValue(":t" + QString::number(i + 1), pattern.mTitles[i]);
+            query.bindValue(":p" + QString::number(i + 1), pattern.mParagraphs[i]);
         }
     }
 
@@ -63,10 +63,11 @@ std::unique_ptr<std::vector<std::unique_ptr<Pattern>>> PatternDao::patterns() co
     {
         std::unique_ptr<Pattern> pattern(new Pattern());
         pattern->setId(query.value("id").toInt());
+        pattern->setName(query.value("name").toString());
         for(int i = 0; i < 12; i++)
         {
-            pattern->mTitles[i] = query.value("T" + QString::number(i)).toString();
-            pattern->mParagraphs[i] = query.value("P" + QString::number(i)).toString();
+            pattern->mTitles.push_back(query.value("T" + QString::number(i + 1)).toString());
+            pattern->mParagraphs.push_back(query.value("P" + QString::number(i + 1)).toString());
         }
         list->push_back(std::move(pattern));
     }
@@ -84,12 +85,12 @@ void PatternDao::updatePattern(const Pattern &pattern) const {
     {
         if(i >= pattern.mTitles.size())
         {
-            query.bindValue(":t" + QString::number(i), "");
-            query.bindValue(":p" + QString::number(i), "");
+            query.bindValue(":t" + QString::number(i + 1), "");
+            query.bindValue(":p" + QString::number(i + 1), "");
         } else
         {
-            query.bindValue(":t" + QString::number(i), pattern.mTitles[i]);
-            query.bindValue(":p" + QString::number(i), pattern.mParagraphs[i]);
+            query.bindValue(":t" + QString::number(i + 1), pattern.mTitles[i]);
+            query.bindValue(":p" + QString::number(i + 1), pattern.mParagraphs[i]);
         }
     }
 

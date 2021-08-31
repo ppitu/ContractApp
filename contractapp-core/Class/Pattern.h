@@ -11,17 +11,17 @@
 
 class Pattern {
 public:
-    Pattern();
+    explicit Pattern(int vector_size = 0);
     void setName(const QString& name);
-    QString getName() const;
+    [[nodiscard]] QString getName() const;
     void setId(int id);
-    int getId() const;
+    [[nodiscard]] int getId() const;
 
     QVector<QString> mTitles;
     QVector<QString> mParagraphs;
 
 private:
-    int mId;
+    int mId{};
     QString mName;
 };
 
