@@ -17,6 +17,19 @@
    <item>
     <widget class="QTableView" name="grdPattern"/>
    </item>
+   <item>
+    <widget class="QPushButton" name="edit">
+     <property name="text">
+      <string>PushButton</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout"/>
+   </item>
+   <item>
+    <widget class="QPlainTextEdit" name="plainTextEdit"/>
+   </item>
   </layout>
  </widget>
  <resources/>

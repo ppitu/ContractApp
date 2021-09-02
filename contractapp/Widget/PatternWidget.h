@@ -7,11 +7,14 @@
 
 #include <QWidget>
 
+#include "Class/Pattern.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class PatternWidget; }
 QT_END_NAMESPACE
 
 class PatternModel;
+//class Pattern;
 
 class PatternWidget : public QWidget {
 Q_OBJECT
@@ -22,9 +25,14 @@ public:
     void setModel(PatternModel *model);
     ~PatternWidget() override;
 
+private slots:
+    void edit();
+
 private:
     Ui::PatternWidget *ui;
     class PatternModel *mPatternModel;
+    int indexOfLast;
+    Pattern mPattern;
 };
 
 
