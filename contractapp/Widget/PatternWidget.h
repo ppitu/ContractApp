@@ -6,6 +6,7 @@
 #define CONTRACTAPP_PATTERNWIDGET_H
 
 #include <QWidget>
+#include <QModelIndex>
 
 #include "Class/Pattern.h"
 
@@ -26,6 +27,7 @@ public:
     ~PatternWidget() override;
 
 private slots:
+    void loadPattern();
     void edit();
 
 private:
@@ -33,6 +35,9 @@ private:
     class PatternModel *mPatternModel;
     int indexOfLast;
     Pattern mPattern;
+    bool isEdit;
+    QModelIndex currentPatternIndex;
+    void save();
 };
 
 

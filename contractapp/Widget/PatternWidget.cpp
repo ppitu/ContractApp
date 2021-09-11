@@ -4,6 +4,7 @@
 
 // You may need to build the project (run Qt uic code generator) to get "ui_PatternWidget.h" resolved
 
+#include <QMessageBox>
 #include "PatternWidget.h"
 #include "ui_PatternWidget.h"
 #include "Model/PatternModel.h"
@@ -11,11 +12,14 @@
 PatternWidget::PatternWidget(QWidget *parent) :
         QWidget(parent),
         ui(new Ui::PatternWidget),
-        indexOfLast(0)
+        indexOfLast(0),
+        isEdit(false)
 {
     ui->setupUi(this);
-
-    connect(ui->edit, &QPushButton::clicked, this, &PatternWidget::edit);
+    ui->plainTextEdit->setEnabled(false);
+    ui->btnCancel->setVisible(false);
+    connect(ui->grdPattern, &QTableView::clicked, this, &PatternWidget::loadPattern);
+    connect(ui->btnEditSave, &QPushButton::clicked, this, &PatternWidget::edit);
 }
 
 PatternWidget::~PatternWidget() {
@@ -27,13 +31,21 @@ void PatternWidget::setModel(PatternModel *model) {
     ui->grdPattern->setModel(model);
 }
 
-void PatternWidget::edit() {
+void PatternWidget::loadPattern() {
     if(ui->grdPattern->selectionModel()->selectedIndexes().isEmpty())
     {
         return;
     }
 
-    QModelIndex currentPatternIndex = ui->grdPattern->selectionModel()->selectedIndexes().first();
+    if(isEdit)
+    {
+        QMessageBox msgBox;
+        msgBox.setText("Uwaga edycja");
+        msgBox.exec();
+        save();
+    }
+
+    currentPatternIndex = ui->grdPattern->selectionModel()->selectedIndexes().first();
 
     mPattern = qvariant_cast<Pattern>(mPatternModel->data(currentPatternIndex, PatternModel::Roles::ID_ROLE));
 
@@ -58,5 +70,27 @@ void PatternWidget::edit() {
     }
 
     ui->plainTextEdit->setPlainText(mPattern.mParagraphs[0]);
+}
+
+void PatternWidget::edit() {
+    if(isEdit)
+    {
+        save();
+        ui->plainTextEdit->setEnabled(false);
+        ui->btnEditSave->setText("Edytuj");
+        ui->btnCancel->setVisible(false);
+        isEdit = false;
+    } else
+    {
+        ui->plainTextEdit->setEnabled(true);
+        ui->btnEditSave->setText("Zapisz");
+        ui->btnCancel->setVisible(true);
+        isEdit = true;
+    }
+}
+
+void PatternWidget::save() {
+    mPattern.mParagraphs[indexOfLast] = ui->plainTextEdit->toPlainText();
+    mPatternModel->setData(currentPatternIndex, QVariant::fromValue(mPattern), PatternModel::Roles::ID_ROLE);
 }
 
