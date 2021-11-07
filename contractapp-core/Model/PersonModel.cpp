@@ -79,7 +79,7 @@ bool PersonModel::setData(const QModelIndex &index, const QVariant &value, int r
     person.setLastName(personTemp.lastName());
     person.setCity(personTemp.city());
     person.setEmail(personTemp.email());
-    person.setPrincipal(personTemp.isPrincipal());
+    person.setIsPrincipal(personTemp.isPrincipal());
     mDb.mPersonDao.updatePerson(person);
     emit dataChanged(index, index);
     return true;
