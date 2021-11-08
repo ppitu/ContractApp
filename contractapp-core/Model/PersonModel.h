@@ -9,7 +9,9 @@
 #include "Class/Person.h"
 #include "Database/DatabaseManager.h"
 
-class PersonModel : public QAbstractTableModel
+#include "contractapp-core_global.h"
+
+class CONTRACTAPPCORE_EXPORT PersonModel : public QAbstractTableModel
 {
     Q_OBJECT
 public:

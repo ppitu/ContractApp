@@ -5,7 +5,9 @@
 #include <QVector>
 #include <QMetaType>
 
-class Pattern
+#include "contractapp-core_global.h"
+
+class CONTRACTAPPCORE_EXPORT Pattern
 {
 public:
     explicit Pattern(int vector_size = 0);

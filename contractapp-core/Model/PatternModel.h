@@ -9,7 +9,9 @@
 #include "Class/Pattern.h"
 #include "Database/DatabaseManager.h"
 
-class PatternModel : public QAbstractTableModel
+#include "../contractapp-core_global.h"
+
+class CONTRACTAPPCORE_EXPORT PatternModel : public QAbstractTableModel
 {
     Q_OBJECT
 public:
