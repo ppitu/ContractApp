@@ -49,7 +49,7 @@ void PersonWidget::createPerson()
 
     if(dialogCode == QDialog::Accepted)
     {
-        person.setPrincipal(isPrincipal);
+        person.setIsPrincipal(isPrincipal);
         QModelIndex createdIndex = mPersonModel->addPerson(person);
         ui->personTable->setCurrentIndex(createdIndex);
     }
