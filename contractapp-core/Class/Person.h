@@ -12,7 +12,7 @@ public:
     Person(const QString &firstName, const QString &lastName, const QString &email, const QString &city,
            const QString &nIP, const QString &pESEL, const QString &dataOfBirth, const QString &street,
            const QString &houseNumber, const QString &flatNumber, const QString &postCode, const QString &municipality,
-           const QString &county, const QString &country, const QString &privince, int isPrincipal);
+           const QString &county, const QString &country, const QString &privince, const QString& phone, int isPrincipal);
     Person();
     Person(const Person& person);
 
@@ -36,7 +36,7 @@ public:
     void setCounty(const QString &newCounty);
     const QString &country() const;
     void setCountry(const QString &newCountry);
-    const QString &privince() const;
+    const QString &province() const;
     void setProvince(const QString &newPrivince);
     void setIsPrincipal(int newIsPrincipal);
     int id() const;
@@ -50,6 +50,9 @@ public:
     const QString &city() const;
     void setCity(const QString &newCity);
     int isPrincipal() const;
+
+    const QString &phone() const;
+    void setPhone(const QString &newPhone);
 
 private:
     int mId{};
@@ -67,7 +70,8 @@ private:
     QString mMunicipality{};
     QString mCounty{};
     QString mCountry{};
-    QString mPrivince{};
+    QString mProvince{};
+    QString mPhone{};
     int mIsPrincipal{};
 };
 

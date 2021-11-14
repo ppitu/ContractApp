@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>485</width>
+    <height>347</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,16 +16,6 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="2" column="0">
-      <widget class="QLineEdit" name="elFirstName"/>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="lblEmail">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="0">
       <widget class="QLabel" name="lblFirstName">
        <property name="text">
@@ -40,7 +30,79 @@
        </property>
       </widget>
      </item>
+     <item row="1" column="2">
+      <widget class="QLabel" name="lblStreet">
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="text">
+        <string>Ulica</string>
+       </property>
+      </widget>
+     </item>
      <item row="5" column="0">
+      <widget class="QLineEdit" name="elEmail"/>
+     </item>
+     <item row="8" column="0">
+      <widget class="QDateEdit" name="deDateOfBirth"/>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="elPesel"/>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLabel" name="lblpesel">
+       <property name="text">
+        <string>Pesel</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLabel" name="lblHouseNumber">
+       <property name="text">
+        <string>Numer domu</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="3">
+      <widget class="QLabel" name="lblCounty">
+       <property name="text">
+        <string>Województwo</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="2">
+      <widget class="QLineEdit" name="elCountry"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLineEdit" name="elFirstName"/>
+     </item>
+     <item row="12" column="3">
+      <widget class="QLineEdit" name="elCounty"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="elLastName"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="lblEmail">
+       <property name="text">
+        <string>Email</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QLineEdit" name="elStreet"/>
+     </item>
+     <item row="2" column="3">
+      <widget class="QLineEdit" name="elHouseNumber"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="lblDateOfBirth">
+       <property name="text">
+        <string>Data urodzenia</string>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="2">
       <spacer name="verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -53,21 +115,82 @@
        </property>
       </spacer>
      </item>
-     <item row="4" column="0">
-      <widget class="QLineEdit" name="elEmail"/>
+     <item row="13" column="2">
+      <widget class="QLabel" name="lblCountry">
+       <property name="text">
+        <string>Kraj</string>
+       </property>
+      </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="elLastName"/>
+     <item row="12" column="2">
+      <widget class="QLineEdit" name="elProvince"/>
      </item>
-     <item row="3" column="1">
+     <item row="10" column="2">
+      <widget class="QLabel" name="lblProvince">
+       <property name="text">
+        <string>Powiat</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="3">
+      <widget class="QLineEdit" name="elMunicipality"/>
+     </item>
+     <item row="6" column="3">
+      <widget class="QLabel" name="lblMunicipality">
+       <property name="text">
+        <string>Gmina</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="2">
+      <widget class="QLineEdit" name="elPostCode"/>
+     </item>
+     <item row="6" column="2">
+      <widget class="QLabel" name="lblPostCode">
+       <property name="text">
+        <string>Kod pocztowy</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="QLineEdit" name="elCity"/>
+     </item>
+     <item row="4" column="3">
       <widget class="QLabel" name="lblCity">
        <property name="text">
         <string>Miasto</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
-      <widget class="QLineEdit" name="elCity"/>
+     <item row="5" column="2">
+      <widget class="QLineEdit" name="elFlatNumber"/>
+     </item>
+     <item row="4" column="2">
+      <widget class="QLabel" name="lblFlatNUmber">
+       <property name="text">
+        <string>Numer mieszkania</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLabel" name="lblNip">
+       <property name="text">
+        <string>NIP</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QLineEdit" name="elNip"/>
+     </item>
+     <item row="12" column="0">
+      <widget class="QLineEdit" name="elPhone"/>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="lblPhone">
+       <property name="text">
+        <string>Numer telefonu</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

@@ -13,6 +13,18 @@ Person::Person(const Person &person)
     mEmail = person.mEmail;
     mCity = person.mCity;
     mIsPrincipal = person.mIsPrincipal;
+    mNIP = person.mNIP;
+    mPESEL = person.mPESEL;
+    mStreet = person.mStreet;
+    mCountry = person.mCountry;
+    mCounty = person.mCounty;
+    mHouseNumber = person.mHouseNumber;
+    mPhone = person.mPhone;
+    mProvince = person.mProvince;
+    mMunicipality = person.mMunicipality;
+    mFlatNumber = person.mFlatNumber;
+    mDataOfBirth = person.mDataOfBirth;
+    mPostCode = person.mPostCode;
 }
 
 const QString &Person::nip() const
@@ -115,14 +127,14 @@ void Person::setCountry(const QString &newCountry)
     mCountry = newCountry;
 }
 
-const QString &Person::privince() const
+const QString &Person::province() const
 {
-    return mPrivince;
+    return mProvince;
 }
 
 void Person::setProvince(const QString &newPrivince)
 {
-    mPrivince = newPrivince;
+    mProvince = newPrivince;
 }
 
 void Person::setIsPrincipal(int newIsPrincipal)
@@ -185,9 +197,19 @@ int Person::isPrincipal() const
     return mIsPrincipal;
 }
 
+const QString &Person::phone() const
+{
+    return mPhone;
+}
+
+void Person::setPhone(const QString &newPhone)
+{
+    mPhone = newPhone;
+}
+
 Person::Person(const QString &firstName, const QString &lastName, const QString &email, const QString &city, const QString &nIP, const QString &pESEL,
                const QString &dataOfBirth, const QString &street, const QString &houseNumber, const QString &flatNumber, const QString &postCode,
-               const QString &municipality, const QString &county, const QString &country, const QString &privince, int isPrincipal)
+               const QString &municipality, const QString &county, const QString &country, const QString &privince, const QString& phone, int isPrincipal)
     : mId(-1),
     mFirstName(firstName),
     mLastName(lastName),
@@ -203,6 +225,7 @@ Person::Person(const QString &firstName, const QString &lastName, const QString 
     mMunicipality(municipality),
     mCounty(county),
     mCountry(country),
-    mPrivince(privince),
+    mProvince(privince),
+    mPhone(phone),
     mIsPrincipal(isPrincipal)
 {}

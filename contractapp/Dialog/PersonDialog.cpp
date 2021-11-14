@@ -17,6 +17,17 @@ PersonDialog::PersonDialog(Person& person, QWidget *parent) :
     ui->elCity->setText(mPerson.city());
     ui->elFirstName->setText(mPerson.firstName());
     ui->elLastName->setText(mPerson.lastName());
+    ui->elCountry->setText(mPerson.country());
+    ui->elCounty->setText(mPerson.county());
+    ui->elFlatNumber->setText(mPerson.flatNumber());
+    ui->elHouseNumber->setText(mPerson.houseNumber());
+    ui->elMunicipality->setText(mPerson.municipality());
+    ui->elNip->setText(mPerson.nip());
+    ui->elPesel->setText(mPerson.pesel());
+    ui->elPostCode->setText(mPerson.postCode());
+    ui->elProvince->setText(mPerson.province());
+    ui->elStreet->setText(mPerson.street());
+    ui->elPhone->setText(mPerson.phone());
 }
 
 PersonDialog::~PersonDialog()
@@ -30,6 +41,18 @@ void PersonDialog::accept()
     mPerson.setFirstName(ui->elFirstName->text());
     mPerson.setLastName(ui->elLastName->text());
     mPerson.setEmail(ui->elEmail->text());
+    mPerson.setCountry(ui->elCountry->text());
+    mPerson.setCounty(ui->elCounty->text());
+    mPerson.setDataOfBirth(ui->deDateOfBirth->date().toString());
+    mPerson.setFlatNumber(ui->elFlatNumber->text());
+    mPerson.setHouseNumber(ui->elHouseNumber->text());
+    mPerson.setMunicipality(ui->elMunicipality->text());
+    mPerson.setNIP(ui->elNip->text());
+    mPerson.setPESEL(ui->elPesel->text());
+    mPerson.setPostCode(ui->elPostCode->text());
+    mPerson.setProvince(ui->elProvince->text());
+    mPerson.setStreet(ui->elStreet->text());
+    mPerson.setPhone(ui->elPhone->text());
 
     QDialog::accept();
 }

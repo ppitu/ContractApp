@@ -21,7 +21,7 @@ void PersonDao::init() const
         query.exec("CREATE TABLE person (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name VARCHAR(50), last_name VARCHAR(50), " \
                    "email VARCHAR(50), city VARCHAR(50), nip VARCHAR(9), date_of_birth VARCHAR(20), pesel VARCHAR(11), " \
                    "street VARCHAR(50), house_number VARCHAR(10), flat_number VARCHAR(10), post_code VARCHAR(20), " \
-                   "municipality VARCHAR(30), county VARCHAR(30), country VARCHAR(30), province VARCHAR(30), principal INTEGER NOT NULL)");
+                   "municipality VARCHAR(30), county VARCHAR(30), country VARCHAR(30), province VARCHAR(30), phone VARCHAR(20), principal INTEGER NOT NULL)");
     }
 
     if(!mDatabase.tables().contains("v_contractor"))
@@ -41,8 +41,8 @@ void PersonDao::addPerson(Person &person) const
 {
     QSqlQuery query(mDatabase);
     query.prepare("INSERT INTO person (first_name, last_name, email, city, nip, date_of_birth, pesel, street, house_number, flat_number, post_code, "
-                  "municipality, county, country, province, principal) VALUES (:first_name, :last_name, :email, :city, :nip, :date_of_birth, :pesel, :street, "
-                  ":house_number, :flat_number, :post_code, :municipality, :county, :country, :province, :principal)");
+                  "municipality, county, country, province, phone,  principal) VALUES (:first_name, :last_name, :email, :city, :nip, :date_of_birth, :pesel, :street, "
+                  ":house_number, :flat_number, :post_code, :municipality, :county, :country, :province, :phone, :principal)");
     query.bindValue(":first_name", person.firstName());
     query.bindValue(":last_name", person.lastName());
     query.bindValue(":email", person.email());
@@ -58,7 +58,8 @@ void PersonDao::addPerson(Person &person) const
     query.bindValue(":municipality", person.municipality());
     query.bindValue(":county", person.county());
     query.bindValue(":country", person.country());
-    query.bindValue(":province", person.privince());
+    query.bindValue(":province", person.province());
+    query.bindValue(":phone", person.phone());
     query.exec();
     person.setId(query.lastInsertId().toInt());
     DatabaseManager::debugQuery(query);
@@ -69,7 +70,7 @@ void PersonDao::updatePerson(const Person &person) const
     QSqlQuery query(mDatabase);
     query.prepare("UPDATE person SET first_name = (:first_name), last_name = (:last_name), email = (:email), city = (:city), nip = (:nip), pesel = (:pesel), "
                   "date_of_birth = (:date_of_birth), street = (:street), house_number = (:house_number), flat_number = (:flat_number), post_code = (:post_code), "
-                  "municipality = (:municipality), county = (:county), country = (:country), province = (:province), principal = (:principal) WHERE id = (:id)");
+                  "municipality = (:municipality), county = (:county), country = (:country), province = (:province), phone = (:phone),  principal = (:principal) WHERE id = (:id)");
     query.bindValue(":first_name", person.firstName());
     query.bindValue(":last_name", person.lastName());
     query.bindValue(":email", person.email());
@@ -86,7 +87,8 @@ void PersonDao::updatePerson(const Person &person) const
     query.bindValue(":municipality", person.municipality());
     query.bindValue(":county", person.county());
     query.bindValue(":country", person.country());
-    query.bindValue(":province", person.privince());
+    query.bindValue(":province", person.province());
+    query.bindValue(":phone", person.phone());
     query.exec();
     DatabaseManager::debugQuery(query);
 }
@@ -126,6 +128,7 @@ std::unique_ptr<std::vector<std::unique_ptr<Person>>> PersonDao::persons(const Q
         person->setPostCode(query.value("post_code").toString());
         person->setProvince(query.value("provice").toString());
         person->setStreet(query.value("street").toString());
+        person->setPhone(query.value("phone").toString());
         list->push_back(std::move(person));
     }
 
